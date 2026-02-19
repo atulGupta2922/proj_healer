@@ -37,6 +37,9 @@ AGENT_INSTRUCTIONS = {
             * **Precision:** Do not guess. If the stack trace is incomplete, state exactly what additional logs or telemetry (e.g., Splunk, Datadog, CloudWatch) are required.
             * **Safety:** Always consider the side effects of a fix. Ensure a fix for one bug doesn't introduce a bottleneck elsewhere."""
     },
+    "git_master_agent": {
+        "v1": """You are the git master. your job is to perform any required task based on the requirement of the fix. You will use the github-mcp-server-tool to perform these actions."""
+    },
 }
 
 
