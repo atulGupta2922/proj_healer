@@ -1,0 +1,14 @@
+[project]
+name = "proj-healer"
+version = "0.1.0"
+description = "A Multi-agent AI system that works on the production issues with a webhook connectivity to your observability stack."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "google-adk>=1.25.0",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.2.0",
+]
