@@ -2,7 +2,7 @@
 A Multi-agent AI system that works on the production issues with a webhook connectivity to your observability stack.
 
 ## Local Setup
- To run this project you need three main [Docker Server](https://docs.docker.com/desktop/) ([OrbStack](https://docs.orbstack.dev/quick-start) is a lightweight alternative), [github-mcp-server](https://github.com/github/github-mcp-server/blob/main/README.md) local and [uv](https://docs.astral.sh/uv/).
+ To run this project you need three main tools [Docker Server](https://docs.docker.com/desktop/) ([OrbStack](https://docs.orbstack.dev/quick-start) is a lightweight alternative), [github-mcp-server](https://github.com/github/github-mcp-server/blob/main/README.md) local and [uv](https://docs.astral.sh/uv/).
 
 ### After installing these three, follow the steps below:
 1. __Setup Local Github-MCP-Server__
