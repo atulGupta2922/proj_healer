@@ -3,6 +3,9 @@ from exceptions.tool_exceptions import UnknownAppException
 
 
 def get_repository_name_by_app_name(app_name: str):
+    """
+    returns the corresponding repository name from the provided app_name
+    """
     try:
         return config.app_repo_mapping[app_name]
     except KeyError:
