@@ -1,0 +1,42 @@
+{
+    "app": "order_services",
+    "timestamp": "2026-02-10T14:58:22.104Z",
+    "level": "CRITICAL",
+    "logger": "uvicorn.error",
+    "request_id": "9f7a8b2c-d3e4-4f5g-6h7i-8j9k0l1m2n3o",
+    "request_path": "/api/v2/orders/checkout",
+    "method": "POST",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+    "exception": {
+        "type": "ConnectionTimeoutError",
+        "message": "Failed to establish a new connection: [Errno 110] Connection timed out",
+        "module": "pymongo.errors",
+        "line_number": 112,
+        "file": "/usr/local/lib/python3.11/site-packages/pymongo/network.py",
+        "stack_trace": [
+            "File \"/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py\", line 426, in run_asgi",
+            "File \"/usr/local/lib/python3.11/site-packages/fastapi/applications.py\", line 270, in __call__",
+            "File \"/app/middleware/auth_middleware.py\", line 45, in dispatch",
+            "  return await call_next(request)",
+            "File \"/app/api/v2/endpoints/orders.py\", line 124, in checkout",
+            "  order_id = await order_manager.finalize_transaction(cart_data)",
+            "File \"/app/services/order_manager.py\", line 208, in finalize_transaction",
+            "  inventory_confirmed = await self.inventory_service.reserve_items(cart_data['items'])",
+            "File \"/app/services/inventory_service.py\", line 56, in reserve_items",
+            "  return await self.db.inventory.find_one_and_update({'_id': item_id}, {'$inc': {'qty': -1}})",
+            "File \"/usr/local/lib/python3.11/site-packages/motor/core.py\", line 124, in _delegate",
+            "  return await self._get_delegate().find_one_and_update(*args, **kwargs)",
+            "File \"/usr/local/lib/python3.11/site-packages/pymongo/collection.py\", line 2512, in find_one_and_update",
+            "  return self._update(filter, update, session, **kwargs)",
+            "File \"/usr/local/lib/python3.11/site-packages/pymongo/network.py\", line 112, in command",
+            "  raise ConnectionTimeoutError('Database cluster ' + self.address + ' is unreachable.')"
+        ]
+    },
+    "metadata": {
+        "container_id": "prod-web-server-7fb9",
+        "region": "us-east-1",
+        "shard": "inventory-cluster-01",
+        "cpu_usage": "88.2%",
+        "memory_usage": "1.2GB"
+    }
+}

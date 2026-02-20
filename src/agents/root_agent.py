@@ -1,20 +1,24 @@
 import json
 import os
 
-from google.adk.agents.llm_agent import Agent
+from google.adk.agents.sequential_agent import SequentialAgent
 from google.genai import types
 from google.adk.runners import InMemoryRunner
 from google.adk.tools.mcp_tool.mcp_toolset import McpToolset
 from services.agent_instructions_service import get_agent_instruction_by_name
 from dotenv import load_dotenv
+from agents.main_agent import main_agent
+from agents.rca_agent import rca_agent
+from agents.bug_fixer_agent import bug_fixer_agent
+
 
 load_dotenv()
 
 try:
-    root_agent = Agent(
+    root_agent = SequentialAgent(
         name="root_agent",
-        model="gemini-2.5-flash",
-        instruction=(get_agent_instruction_by_name("root_agent")),
+        description="Runs the Code healer Agents in sequence.",
+        sub_agents=[main_agent, rca_agent, bug_fixer_agent],
     )
 except Exception as e:
     raise e
